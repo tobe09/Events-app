@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IEvent } from './index';
 
 @Component({
     selector: 'events-thumbnail',
@@ -30,7 +31,7 @@ import { Component, Input } from '@angular/core';
     `]
 })
 export class EventsThumbnailComponent {
-    @Input() event: any;
+    @Input() event: IEvent;
 
     getPriceClass() {
         const isLessThan600 = this.event.price < 600;
