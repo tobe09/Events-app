@@ -23,9 +23,11 @@ export class EventDetailsComponent implements OnInit {
     constructor (private eventService: EventService, private route: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.event = this.eventService.getEvent(
-            +this.route.snapshot.params['id']
-        );
+        this.route.params.forEach(params => {
+            // get a new event on next of params observable
+            this.event = this.eventService.getEvent(+params['id']);
+            this.addMode = false;
+        });
     }
 
     addSession() {
