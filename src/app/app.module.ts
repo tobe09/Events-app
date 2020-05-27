@@ -10,6 +10,7 @@ import { Error404Component } from './errors/404.component';
 import { AuthService } from './user';
 import { FormsModule } from '@angular/forms';
 import { EventService } from './events';
+import { HttpClientModule } from '@angular/common/http';
 
 const toastr: Toastr = window['toastr'];
 const jquery = window['$'];
@@ -18,6 +19,7 @@ const jquery = window['$'];
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [

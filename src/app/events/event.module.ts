@@ -4,28 +4,33 @@ import { RouterModule } from '@angular/router';
 
 import { IsDirty } from '../common/app-interfaces';
 
-import {
-  EventsListComponent,
-  EventsThumbnailComponent,
-  EventService,
-  EventDetailsComponent,
-  CreateEventComponent,
-  EventRouteActivator,
-  EventListResolver,
-  CreateSessionComponent,
-  SessionListComponent
-} from './index';
 
 import { eventRoutes } from './event.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from '../common/collapsible-well.component';
 import { DurationPipe } from './shared/duration.pipe';
+import { EventsListComponent } from './events-list-component';
+import { EventsThumbnailComponent } from './event-thumbnail-component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { CreateEventComponent } from './create-event.component';
+import { CreateSessionComponent } from './event-details/create-session.component';
+import { SessionListComponent } from './event-details/session-list.component';
+import { UpvoteComponent } from './event-details/upvote.component';
+import { LocationValidatorDirective } from './location-validator.directive';
+import { EventRouteActivator } from './event-details/event-route-activator.service';
+import { EventListResolver } from './shared/event-list-resolve.service';
+import { VoterService } from './event-details/voter.service';
+import { EventService } from './shared';
+import { HttpClientModule } from '@angular/common/http';
+import { EventResolver } from './shared/event-resolver.service';
+import { ErrorHandlerService } from '../common/error-handler.service';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpClientModule,
         RouterModule.forChild(eventRoutes)
     ],
     declarations: [
@@ -36,7 +41,9 @@ import { DurationPipe } from './shared/duration.pipe';
         CreateSessionComponent,
         SessionListComponent,
         CollapsibleWellComponent,
-        DurationPipe
+        UpvoteComponent,
+        DurationPipe,
+        LocationValidatorDirective
     ],
     providers: [
         EventService,
@@ -50,7 +57,10 @@ import { DurationPipe } from './shared/duration.pipe';
             return true;
           }
         },
-        EventListResolver
+        EventListResolver,
+        EventResolver,
+        VoterService,
+        ErrorHandlerService
     ]
 })
 export class EventModule {

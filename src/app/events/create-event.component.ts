@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IsDirty } from '../common/app-interfaces';
 import { IEvent } from './shared/event.model';
-import { EventService } from './shared';
+import { EventService } from './shared/event.service';
 
 @Component({
     templateUrl: './create-event.component.html',
@@ -20,11 +20,17 @@ export class CreateEventComponent implements IsDirty {
 
     constructor(private router: Router, private eventService: EventService) {}
 
-    isDirty = () => false;
+    private _isDirty = true;
+    isDirty() {
+        return this._isDirty;
+    }
 
     saveEvent(formValues: any) {
-        this.eventService.saveEvent(formValues);
-        this.router.navigate(['/events']);
+        this.eventService.saveEvent(formValues).subscribe(event => {
+            console.log(event.id);
+            this._isDirty = false;
+            this.router.navigate(['/events']);
+        });
     }
 
     cancel() {
