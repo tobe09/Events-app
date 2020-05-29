@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { ErrorHandlerService } from 'src/app/common/error-handler.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EventService {
     constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {}
 

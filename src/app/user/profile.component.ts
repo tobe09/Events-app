@@ -13,6 +13,7 @@ import { TOASTR_TOKEN, Toastr } from '../common/toastr.service';
     .error ::-moz-placeholder { color: #999; }
     .error :-moz-placeholder { color: #999; }
     .error :ms-input-placeholder { color: #999; }
+    button { margin-right: 10px; }
   `]
 })
 export class ProfileComponent implements OnInit {
@@ -37,12 +38,17 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-    this.toastr.success('Updated Successfully!');
+    this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+      .subscribe(() => this.toastr.success('Updated Successfully!'));
   }
 
   cancel() {
     this.router.navigate(['/events']);
+  }
+
+  logout() {
+    this.authService.logoutUser()
+      .subscribe(() => this.router.navigate(['/users/login']));
   }
 
   isValidFirstName() {

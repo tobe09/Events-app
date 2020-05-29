@@ -4,3 +4,8 @@ export interface IUser {
     lastName: string;
     userName: string;
 }
+
+export interface LoginInfo {
+    success: boolean;
+    user: IUser;
+}

@@ -10,14 +10,16 @@ export class VoterService {
 
     addVoter(eventId: number, session: ISession, voterName: string) {
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
-        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' } ) };
 
-        return this.http.post<ISession>(url, session, options)
+        return this.http.post<ISession>(url, session)
           .pipe(catchError(this.errorHandler.handleError<ISession>('addVoter')));
     }
 
-    deleteVoter(session: ISession, username: string) {
-        session.voters = session.voters.filter(voter => voter !== username);
+    deleteVoter(eventId: number, session: ISession, voterName: string) {
+        const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+
+        return this.http.delete<ISession>(url)
+          .pipe(catchError(this.errorHandler.handleError<ISession>('deleteVoter')));
     }
 
     userHasVoted(session: ISession, username: string) {

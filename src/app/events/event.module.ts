@@ -20,10 +20,8 @@ import { LocationValidatorDirective } from './location-validator.directive';
 import { EventRouteActivator } from './event-details/event-route-activator.service';
 import { EventListResolver } from './shared/event-list-resolve.service';
 import { VoterService } from './event-details/voter.service';
-import { EventService } from './shared';
 import { HttpClientModule } from '@angular/common/http';
 import { EventResolver } from './shared/event-resolver.service';
-import { ErrorHandlerService } from '../common/error-handler.service';
 
 @NgModule({
     imports: [
@@ -46,7 +44,6 @@ import { ErrorHandlerService } from '../common/error-handler.service';
         LocationValidatorDirective
     ],
     providers: [
-        EventService,
         EventRouteActivator,
         {
           provide: 'checkBeforeDeactivate',
@@ -59,8 +56,7 @@ import { ErrorHandlerService } from '../common/error-handler.service';
         },
         EventListResolver,
         EventResolver,
-        VoterService,
-        ErrorHandlerService
+        VoterService
     ]
 })
 export class EventModule {
