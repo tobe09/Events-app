@@ -1,1 +1,1 @@
-web: node node_modules/ngf-server/server.js
+web: node nodeModules/ngf-server/server.js

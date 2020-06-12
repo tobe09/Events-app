@@ -2,7 +2,7 @@
   "name": "event-app",
   "version": "0.0.0",
   "scripts": {
-    "server": "node node_modules/ngf-server/server.js"
+    "server": "node nodeModules/ngf-server/server.js"
   },
   "private": true,
   "dependencies": {

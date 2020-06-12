@@ -1,1 +1,1 @@
-# Heroku Hosted API to serve Angular Events App
+# Heroku Hosted Version of Events App (Minimized)
