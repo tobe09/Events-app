@@ -5,5 +5,7 @@
     "server": "node node_modules/ngf-server/server.js"
   },
   "private": true,
-  "dependencies": {  }
+  "dependencies": {
+    "ngf-server": "^1.0.2"
+  }
 }
