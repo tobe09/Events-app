@@ -1,6 +1,0 @@
-{
-    "/api": {
-        "target": "https://tobe-events-app.herokuapp.com",
-        "secure": false
-    }
-}
