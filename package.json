@@ -1,5 +1,5 @@
 {
-  "name": "event-app-api",
+  "name": "event-app",
   "version": "0.0.0",
   "scripts": {
     "server": "node node_modules/ngf-server/server.js"
