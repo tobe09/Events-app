@@ -26,7 +26,10 @@ export class CreateEventComponent implements IsDirty {
     }
 
     saveEvent(formValues: any) {
-        this.eventService.saveEvent(formValues).subscribe(event => {
+        const newEvent: IEvent = formValues;
+        newEvent.date = new Date(newEvent.date.toString());
+
+        this.eventService.saveEvent(newEvent).subscribe(event => {
             console.log(event.id);
             this._isDirty = false;
             this.router.navigate(['/events']);

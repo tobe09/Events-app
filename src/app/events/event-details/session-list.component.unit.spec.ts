@@ -1,7 +1,7 @@
-import { SessionListComponent } from "./session-list.component"
-import { Toastr } from 'src/app/common'
-import { AuthService } from 'src/app/user'
-import { VoterService } from './voter.service'
+import { SessionListComponent } from './session-list.component';
+import { Toastr } from 'src/app/common';
+import { AuthService } from 'src/app/user';
+import { VoterService } from './voter.service';
 import { ISession } from '../shared';
 
 
@@ -33,7 +33,7 @@ describe('SessionListComponent', () => {
 
             expect(sessionListComponent.visibleSessions.length).toBe(2);
          });
-         
+
          it('should_sort_the_sessions_correctly', () => {
             sessionListComponent.sessions = <ISession[]>[
                 { name: 'session 3', level: 'intermediate' },

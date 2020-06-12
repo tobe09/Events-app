@@ -11,14 +11,13 @@ export class EventService {
     constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {}
 
     getEvents(): Observable<IEvent[]> {
+      return this.http.get<IEvent[]>('/api/events')
+        .pipe(catchError(this.errorHandler.handleError<IEvent[]>('getEvents', [])));
       // const subject = new Subject<IEvent[]>();
       // setTimeout(() => {
       //   subject.next(events);
       //   subject.complete();
       // }, 100);
-
-      return this.http.get<IEvent[]>('/api/events')
-        .pipe(catchError(this.errorHandler.handleError<IEvent[]>('getEvents', [])));
     }
 
     getEvent(id: number): Observable<IEvent> {
@@ -27,12 +26,12 @@ export class EventService {
     }
 
     saveEvent(event: IEvent) {
-      // event.id = 999;
-      // event.sessions = [];
-      // events.push(event);
       const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' } ) };
       return this.http.post<IEvent>('/api/events', event, options)
         .pipe(catchError(this.errorHandler.handleError<IEvent>('saveEvent')));
+      // event.id = 999;
+      // event.sessions = [];
+      // events.push(event);
     }
 
     updateEvent(event: IEvent) {
@@ -40,6 +39,9 @@ export class EventService {
     }
 
     searchSessions(searchText: string) {
+      return this.http.get<ISession[]>('/api/sessions/search?search=' + searchText)
+        .pipe(catchError(this.errorHandler.handleError<ISession[]>('searchSessions')),
+              map(sessions => sessions.map(session => <FoundSessions>{ eventId: session['eventId'], session })));
       // const term = searchText.toLocaleLowerCase();
       // let sessions = [] as FoundSessions[];
 
@@ -53,9 +55,6 @@ export class EventService {
       // setTimeout(() => emitter.emit(sessions), 100);
 
       // return emitter;
-      return this.http.get<ISession[]>('/api/sessions/search?search=' + searchText)
-        .pipe(catchError(this.errorHandler.handleError<ISession[]>('searchSessions')),
-              map(sessions => sessions.map(session => <FoundSessions>{ eventId: session.id, session })));
     }
 }
 

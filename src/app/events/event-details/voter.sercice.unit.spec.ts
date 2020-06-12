@@ -4,7 +4,6 @@ import { ErrorHandlerService } from 'src/app/common/error-handler.service';
 import { ISession } from '../shared';
 import { of } from 'rxjs';
 
-
 describe('VoterService', () => {
     let voterService: VoterService,
         mockHttp: HttpClient,
@@ -47,7 +46,7 @@ describe('VoterService', () => {
         });
     });
 
-    describe('addVoter', () => {        
+    describe('addVoter', () => {
         it('should_add_voter_from_the_list_of_voters', () => {
             const session = { id: 6, voters: ['joe', 'john'] };
             const voterName = 'jill';
