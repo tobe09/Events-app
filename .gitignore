@@ -5,7 +5,6 @@
 /out-tsc
 
 # dependencies
-/node_modules
 /.history
 
 # profiling files
