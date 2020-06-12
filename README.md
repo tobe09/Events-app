@@ -1,4 +1,4 @@
-# NGFUNDAMENTALS
+# An App Which Displays and Manages Dummy Angular Events
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
