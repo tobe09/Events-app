@@ -20,7 +20,7 @@ export class CreateEventComponent implements IsDirty {
 
     constructor(private router: Router, private eventService: EventService) {}
 
-    private _isDirty = true;
+    private _isDirty = false;
     isDirty() {
         return this._isDirty;
     }
